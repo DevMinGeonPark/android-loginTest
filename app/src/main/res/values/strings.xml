@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Deitem_Login</string>
+    <string name="id">id</string>
+    <string name="pw">pw</string>
+    <string name="btn_login">btn_login</string>
+    <string name="btn_register">btn_register</string>
+    <string name="test">test</string>
+</resources>
