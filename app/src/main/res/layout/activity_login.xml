@@ -6,51 +6,42 @@
     android:orientation="vertical"
     android:padding="10dp" >
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/login_emain"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:layout_marginBottom="10dp"
+        android:autofillHints=""
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/et_id"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/id"
-            android:inputType="textCapWords"
-            android:padding="10dp"
-            android:autofillHints="" />
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:autofillHints=""
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
 
-        <EditText
-            android:id="@+id/et_pass"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:hint="@string/pw"
-            android:inputType="textEmailAddress"
-            android:padding="10dp"
-            android:autofillHints="" />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="#D6C7CD"
+        android:text="@string/Login"
+        android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="#D6C7CD"
-            android:text="@string/btn_login"
-            android:textColor="@color/white" />
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="#CFC1C7"
+        android:text="@string/register"
+        android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="#CFC1C7"
-            android:text="@string/btn_register"
-            android:textColor="@color/white" />
-
-    </LinearLayout>
 </LinearLayout>

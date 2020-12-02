@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Deitem_Login</string>
-    <string name="id">id</string>
-    <string name="pw">pw</string>
-    <string name="btn_login">btn_login</string>
-    <string name="btn_register">btn_register</string>
     <string name="test">test</string>
+    <string name="id">id</string>
+    <string name="Login">로그인</string>
+    <string name="register">회원가입</string>
+    <string name="email">Email</string>
+    <string name="name">이름</string>
+    <string name="password">Password</string>
+    <string name="man">남성</string>
+    <string name="female">여성</string>
+    <string name="phone">전화번호</string>
 </resources>
