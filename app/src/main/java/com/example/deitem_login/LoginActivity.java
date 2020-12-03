@@ -7,6 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -14,42 +18,41 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+//import com.example.deitem_login.GoogleLoginActivity;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText email, password; //input text
-    private Button btn_login, btn_sign_up; //button event
-    FirebaseAuth firebaseAuth;
+    private EditText email, password; //아이디 비밀번호
+    private Button buttonLogin, ButtonSignIn; //로그인, 회원가입
+    private SignInButton buttonGoogle;
+    
+    
+    FirebaseAuth firebaseAuth; //파이어베이스 인증객체
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //main
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
-        email = findViewById( R.id.login_emain ); //id object
-        password = findViewById( R.id.login_password ); //pw object
-        btn_login = findViewById( R.id.btn_login );
-        btn_sign_up = findViewById( R.id.btn_sign_up ); //btn object
+        email = findViewById( R.id.login_emain );
+        password = findViewById( R.id.login_password );
+        buttonLogin = findViewById( R.id.btn_login );
+        ButtonSignIn = findViewById( R.id.btn_sign_up );
+        buttonGoogle = findViewById( R.id.btn_googleSignIn );
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance(); //파이어베이스 인증 인스턴스
 
-        btn_sign_up.setOnClickListener( new View.OnClickListener() { // sign_up
+        ButtonSignIn.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) { //change screen register intent
                 Intent intent = new Intent( com.example.deitem_login.LoginActivity.this, com.example.deitem_login.SignUpActivity.class );
                 startActivity( intent );
             }
-        });
+        }); //회원가입 event listener
 
-        btn_login.setOnClickListener( new View.OnClickListener() { // Login
+        buttonLogin.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (password.length()<8) { //8이하의 비밀번호
@@ -75,6 +78,14 @@ public class LoginActivity extends AppCompatActivity {
                             }
                 });
             }
+        }); // 로그인 event listener
+
+        buttonGoogle.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, "임시 테스트", Toast.LENGTH_SHORT).show();
+            }
         });
+
     }
 }
