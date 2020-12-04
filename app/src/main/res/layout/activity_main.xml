@@ -15,7 +15,18 @@
             android:id="@+id/test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/test"
-            android:onClick="BtnClick"/>
+            android:text="@string/test" />
+
+        <Button
+            android:id="@+id/nameTest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nametest" />
+
+        <Button
+            android:id="@+id/Test3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test3" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

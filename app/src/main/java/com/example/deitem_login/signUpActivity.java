@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firestore.v1.FirestoreGrpc;
 
 import java.util.regex.Pattern;
@@ -72,7 +73,10 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    Toast.makeText(SignUpActivity.this, "회원가입에 완료했습니다.", Toast.LENGTH_SHORT).show();
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(name.toString())
+                                            .build();
+                                    Toast.makeText(SignUpActivity.this, user.getDisplayName(), Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();

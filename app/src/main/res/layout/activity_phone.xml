@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start"
+        android:src="@drawable/allow"
+        android:contentDescription="@string/go_back" />
+
+    <TextView
+        android:layout_marginTop="40dp"
+        android:id="@+id/self_auth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_self_auth"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Text_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_phone"
+        android:textSize="15.5sp"
+        android:layout_marginTop="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/p_n"
+            android:layout_width="420dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:autofillHints="" />
+
+        <TextView
+            android:id="@+id/certification_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/certification_request"
+            android:textSize="19sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_verification_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_verification_code"
+        android:textSize="15.5sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/text_verification_code_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/retransmission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/retransmission" />
+
+    <Button
+        android:id="@+id/verification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="#FF9800"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/verification" />
+
+</LinearLayout>
