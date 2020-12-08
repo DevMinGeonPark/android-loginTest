@@ -49,20 +49,20 @@
         tools:ignore="TextFields" />
 
     <RadioGroup
-        android:id="@+id/sign_sex"
+        android:id="@+id/sign_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rg_man"
+            android:id="@+id/btn_man"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/man" />
 
         <RadioButton
-            android:id="@+id/rg_female"
+            android:id="@+id/btn_female"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

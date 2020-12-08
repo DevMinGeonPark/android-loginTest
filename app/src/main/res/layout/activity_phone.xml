@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp">
 
     <ImageView
+        android:id="@+id/btn_return"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="start"
@@ -14,8 +16,8 @@
         android:contentDescription="@string/go_back" />
 
     <TextView
+        android:id="@+id/text_self_auth"
         android:layout_marginTop="40dp"
-        android:id="@+id/self_auth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_self_auth"
@@ -23,7 +25,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/Text_phone"
+        android:id="@+id/text_phone_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_phone"
@@ -34,25 +36,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        tools:ignore="LabelFor" >
 
         <EditText
-            android:id="@+id/p_n"
-            android:layout_width="420dp"
+            android:id="@+id/scan_phone_number"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:autofillHints="" />
+            android:inputType="phone"
+            tools:ignore="LabelFor"
+            android:importantForAutofill="no"
+            tools:targetApi="o"/>
 
         <TextView
-            android:id="@+id/certification_request"
+            android:id="@+id/btn_auth_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/certification_request"
-            android:textSize="19sp"/>
+            android:layout_marginStart="10dp"
+            android:textSize="19sp"
+            tools:ignore="LabelFor"/>
+
     </LinearLayout>
 
     <TextView
-        android:id="@+id/text_verification_code"
+        android:id="@+id/text_auth_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/text_verification_code"
@@ -61,20 +69,22 @@
         />
 
     <EditText
-        android:id="@+id/text_verification_code_number"
+        android:id="@+id/scan_auth_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        tools:ignore="LabelFor"
+        tools:targetApi="o"
         android:importantForAutofill="no" />
 
     <TextView
-        android:id="@+id/retransmission"
+        android:id="@+id/btn_auth_number_re_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/retransmission" />
 
     <Button
-        android:id="@+id/verification"
+        android:id="@+id/btn_auth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"

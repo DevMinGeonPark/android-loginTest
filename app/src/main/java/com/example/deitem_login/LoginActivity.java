@@ -7,73 +7,78 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.deitem_login.GoogleLoginActivity;
+
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.firestore.auth.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import com.example.deitem_login.UserInfo;
 
 public class LoginActivity extends AppCompatActivity {
 
-    //Email 로그인 변수
-    private EditText email, password; //아이디 비밀번호
-    private Button buttonLogin, ButtonSignIn; //로그인, 회원가입
-    private GoogleLoginActivity googleLoginActivity;
+    // 이메일 로그인 변수
+    private EditText email, password, phone;
+    private Button buttonLogin, buttonSignIn;
 
-    //Google 로그인 변수
-    private static final int RC_SIGN_IN = 9001;
-    //구글 api 클라이언트
+    // 파이어베이스 데이터베이스 변수
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    
+    // 구글 로그인 변수
+    private final int RC_SIGN_IN = 9001;
     private GoogleSignInClient googleSignInClient;
-    // 파이어베이스 인증 객체
     private FirebaseAuth firebaseAuth;
-    //구글 로그인버튼
     private SignInButton buttonGoogle;
 
+    // 유저객체
+    private UserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_login );
 
-        email = findViewById( R.id.login_emain );
+        // 바인딩
+        email = findViewById( R.id.login_email );
         password = findViewById( R.id.login_password );
+        phone = findViewById(R.id.sign_phone);
         buttonLogin = findViewById( R.id.btn_login );
-        ButtonSignIn = findViewById( R.id.btn_sign_up );
+        buttonSignIn = findViewById( R.id.btn_sign_up );
         buttonGoogle = findViewById( R.id.btn_googleSignIn );
+        
+        // 파이어베이스 인증객체
+        firebaseAuth = FirebaseAuth.getInstance(); 
+        
+        if (firebaseAuth.getCurrentUser() != null) {
+            Toast.makeText(LoginActivity.this, "환영합니다.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplication(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        } //현재 로그인 상태를 확인하고 로그인 중이면 Main으로 화면전환
 
-        firebaseAuth = FirebaseAuth.getInstance(); //파이어베이스 인증 인스턴스
-
-//        if (firebaseAuth.getCurrentUser() != null) {
-//            Intent intent = new Intent(getApplication(), MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-
-        ButtonSignIn.setOnClickListener( new View.OnClickListener() {
+        buttonSignIn.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) { //change screen register intent
+            public void onClick(View view) {
+                // Change Screen SignUpActivity
                 Intent intent = new Intent( com.example.deitem_login.LoginActivity.this, com.example.deitem_login.SignUpActivity.class );
                 startActivity( intent );
             }
-        }); //회원가입 event listener
+        }); //회원가입 Event Listener
 
         buttonLogin.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -92,9 +97,6 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = firebaseAuth.getCurrentUser();
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName("박민건")
-                                            .build();
                                     Toast.makeText(LoginActivity.this, R.string.login_ok , Toast.LENGTH_SHORT).show();
                                     updateUI(user);
                                 } else {
@@ -104,52 +106,48 @@ public class LoginActivity extends AppCompatActivity {
                             }
                 });
             }
-        }); // 로그인 event listener
-
-        //Google Sign-In Code
-
+        }); // 로그인 Event Listener
+        
+        // 구글 로그인
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
-                .build();
-
-
-        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions);
-
+                .build(); //구글 로그인 코드로 토큰을 보내고 이메일 반환
+        googleSignInClient = GoogleSignIn.getClient(this, googleSignInOptions); //해당 액티비티에 구글 클라이언트 가져오기
+        
         buttonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent signInIntent = googleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
-        });
+        }); // 구글 로그인 Event Listener
 
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
+                firebaseAuthWithGoogle(account); //인증실행
             } catch (ApiException e) {
+
             }
         }
-    }
+    } // 구글 로그인 액티비티 실행, 이미 로그인되어있으면 생략되고 인증실행
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         firebaseAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                       if (task.isSuccessful()) {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
+                            //userInfo = new UserInfo(user.getUid(), user.getEmail(), user.getDisplayName(), "00000000","22");
                             Toast.makeText(LoginActivity.this, R.string.login_ok , Toast.LENGTH_SHORT).show();
                             updateUI(user);
                         } else {
@@ -158,7 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
-    }
+    } // 구글 인증
 
     private void updateUI(FirebaseUser user) { //update ui code here
         if (user != null) {
@@ -166,5 +164,5 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-    }
+    } //UI 업데이트
 }

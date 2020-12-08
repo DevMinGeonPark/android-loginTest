@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Deitem_Login</string>
-    <string name="test">test</string>
+    <string name="login_test">login Test</string>
     <string name="id">id</string>
     <string name="Login">로그인</string>
     <string name="register">회원가입</string>
@@ -14,7 +14,7 @@
     <string name="login_fail">로그인을 실패했습니다.</string>
     <string name="login_error">"아이디 혹은 비밀번호가 틀렸습니다."</string>
     <string name="login_error_pwlength">"비밀번호는 8자 이상만 가능합니다."</string>
-    <string name="nametest">NameTest</string>
+    <string name="database_test">DataBaseTest</string>
     <string name="text_self_auth">본인인증</string>
     <string name="text_phone">휴대전화번호 (예시: 01012345678)</string>
     <string name="certification_request">인증요청</string>
@@ -23,4 +23,5 @@
     <string name="verification">인증하기</string>
     <string name="test3">Test3</string>
     <string name="go_back">돌아가기 버튼</string>
+    <string name="main">이곳은 Main입니다.</string>
 </resources>
