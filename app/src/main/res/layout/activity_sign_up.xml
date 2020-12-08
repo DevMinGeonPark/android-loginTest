@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="10dp"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <EditText
-        android:id="@+id/sign_email"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:autofillHints=""
-        android:hint="@string/email"
-        android:inputType="textCapWords"
-        android:padding="10dp" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/sign_email"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/auth_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:textSize="16sp"
+            android:clickable="true"
+            android:onClick="actions"
+            android:text="@string/verification" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/sign_pwd"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints=""
@@ -28,8 +45,18 @@
         android:padding="10dp" />
 
     <EditText
+        android:id="@+id/sign_is_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:autofillHints=""
+        android:hint="@string/confirm_password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
+
+    <EditText
         android:id="@+id/sign_name"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints=""
@@ -39,7 +66,7 @@
 
     <EditText
         android:id="@+id/sign_phone"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints=""
@@ -72,7 +99,7 @@
 
     <Button
         android:id="@+id/sign_up"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
         android:background="#CFC1C7"

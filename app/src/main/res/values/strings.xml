@@ -10,7 +10,7 @@
     <string name="man">남성</string>
     <string name="female">여성</string>
     <string name="phone">전화번호</string>
-    <string name="login_ok">로그인을 성공했습니다.</string>
+    <string name="login_suc">로그인을 성공했습니다.</string>
     <string name="login_fail">로그인을 실패했습니다.</string>
     <string name="login_error">"아이디 혹은 비밀번호가 틀렸습니다."</string>
     <string name="login_error_pwlength">"비밀번호는 8자 이상만 가능합니다."</string>
@@ -24,4 +24,9 @@
     <string name="test3">Test3</string>
     <string name="go_back">돌아가기 버튼</string>
     <string name="main">이곳은 Main입니다.</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_email">^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\\\w+\\\\.)+\\\\w+$\n</string>
+    <string name="confirm_name">^[가-힣]{2,4}$</string>
+    <string name="confirm_phone">^01(?:0|1|[6-9]\\d{3})[.-]?(\\d{4})[.-]?(\\d{4})$</string>
+    <string name="sign_out">Sign out</string>
 </resources>

@@ -45,10 +45,10 @@
         android:text="@string/register"
         android:textColor="@color/white" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id = "@+id/btn_googleSignIn"
-        android:layout_width = "fill_parent"
-        android:layout_height = "wrap_content"
-        android:layout_marginTop="20dip"/>
+<!--    <com.google.android.gms.common.SignInButton-->
+<!--        android:id = "@+id/btn_googleSignIn"-->
+<!--        android:layout_width = "fill_parent"-->
+<!--        android:layout_height = "wrap_content"-->
+<!--        android:layout_marginTop="20dip"/>-->
 
 </LinearLayout>
