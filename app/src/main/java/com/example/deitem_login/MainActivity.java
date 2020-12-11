@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.example.deitem_login.UserInfo;
 
 
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     // 해당 Activity는 test 코드입니다.
     private Button loginTest, nameTest, test3, signOut;
+    private TextView textView;
+    private EditText textFocus;
     //private FirebaseAuth firebaseAuth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //  private UserInfo userinfo;
@@ -59,8 +64,14 @@ public class MainActivity extends AppCompatActivity {
         nameTest.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "sibal" , Toast.LENGTH_SHORT).show();
-                sendEmailVerification();
+                Toast.makeText(MainActivity.this, "실행중" , Toast.LENGTH_SHORT).show();
+                if (user!=null) {
+                    Toast.makeText(MainActivity.this, "send" , Toast.LENGTH_SHORT).show();
+                    sendEmailVerification();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "현재 로그인 된 유저가 없습니다," , Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -70,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent( com.example.deitem_login.MainActivity.this, com.example.deitem_login.PhoneActivity.class );
                 startActivity( intent );
+
             }
         });
 
@@ -83,12 +95,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        textView = findViewById(R.id.textView);
+        textView.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "test" , Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        textFocus = findViewById(R.id.test_focus);
+
+        textFocus.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                //포커스를 잃을때.
+                if(!hasFocus) {
+                    Toast.makeText(MainActivity.this, "포커스 잃음 ㅇ" , Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+        });
+
+
     }
 
     public void sendEmailVerification() {
         // [START send_email_verification]
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
+
+
 
         user.sendEmailVerification()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -14,24 +15,31 @@
 
         <EditText
             android:id="@+id/sign_email"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_marginBottom="10dp"
+            android:layout_weight="4"
             android:autofillHints=""
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="10dp" />
 
         <TextView
-            android:id="@+id/auth_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:onClick="actions"
-            android:text="@string/verification" />
+            android:paddingStart="8dp"
+            android:layout_height="match_parent"
+            android:textSize="25sp"
+            android:text="@string/u0040" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:spinnerMode="dropdown"
+            android:layout_weight="4"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
     <EditText
@@ -45,11 +53,12 @@
         android:padding="10dp" />
 
     <EditText
-        android:id="@+id/sign_is_pwd"
+        android:id="@+id/sign_confirm_pwd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints=""
+        android:drawableEnd="@drawable/x"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
         android:padding="10dp" />

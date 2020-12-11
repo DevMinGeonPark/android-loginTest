@@ -21,7 +21,7 @@
             android:id="@+id/nameTest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/database_test" />
+            android:text="@string/btn_test2" />
 
         <Button
             android:id="@+id/test3"
@@ -40,7 +40,24 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="50sp"
             android:text="@string/main" />
+
+        <EditText
+            android:id="@+id/test_focus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/test3" />
+
+        <EditText
+            android:id="@+id/test_focus2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/btn_test2" />
 
 
     </LinearLayout>

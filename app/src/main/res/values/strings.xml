@@ -5,23 +5,23 @@
     <string name="Login">로그인</string>
     <string name="register">회원가입</string>
     <string name="email">Email</string>
-    <string name="name">이름</string>
+    <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="man">남성</string>
     <string name="female">여성</string>
-    <string name="phone">전화번호</string>
+    <string name="phone">Phone Number</string>
     <string name="login_suc">로그인을 성공했습니다.</string>
     <string name="login_fail">로그인을 실패했습니다.</string>
     <string name="login_error">"아이디 혹은 비밀번호가 틀렸습니다."</string>
     <string name="login_error_pwlength">"비밀번호는 8자 이상만 가능합니다."</string>
-    <string name="database_test">DataBaseTest</string>
+    <string name="btn_test2">Email Test</string>
     <string name="text_self_auth">본인인증</string>
     <string name="text_phone">휴대전화번호 (예시: 01012345678)</string>
     <string name="certification_request">인증요청</string>
     <string name="text_verification_code">인증번호</string>
     <string name="retransmission">인증번호 재전송</string>
     <string name="verification">인증하기</string>
-    <string name="test3">Test3</string>
+    <string name="test3">test3</string>
     <string name="go_back">돌아가기 버튼</string>
     <string name="main">이곳은 Main입니다.</string>
     <string name="confirm_password">Confirm Password</string>
@@ -29,4 +29,5 @@
     <string name="confirm_name">^[가-힣]{2,4}$</string>
     <string name="confirm_phone">^01(?:0|1|[6-9]\\d{3})[.-]?(\\d{4})[.-]?(\\d{4})$</string>
     <string name="sign_out">Sign out</string>
+    <string name="u0040">"@"</string>
 </resources>
